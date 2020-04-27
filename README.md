@@ -57,6 +57,11 @@ Run server:
 
 ------------------------------------------------------------------------------
 
+If there is a problem with the CORS, just use the work-around method:
+**"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp**
+
+------------------------------------------------------------------------------
+
 Enjoy! 
 
 
