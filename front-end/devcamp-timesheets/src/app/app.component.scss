@@ -1,0 +1,32 @@
+.navbar {
+    border-bottom: 1px solid rgb(18, 38, 74);
+    .logo-img {
+        height: 55px;
+    }
+
+    .navbar-nav {
+        > .nav-link {
+            font-size: 20px;
+            cursor: pointer;
+
+            > i {
+                color: rgb(56, 163, 220);
+                cursor: pointer;
+            }
+        }
+
+        > .nav-link:hover {
+            font-size: 21px;
+
+            > i {
+                color: rgb(18, 38, 74);
+            }
+        }
+    }
+
+    .navbar-nav > .nav-item {
+        > p {
+            color: rgb(18, 38, 74);
+        }
+    }
+}

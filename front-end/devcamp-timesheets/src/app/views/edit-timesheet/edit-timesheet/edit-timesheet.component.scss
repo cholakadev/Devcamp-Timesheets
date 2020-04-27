@@ -1,0 +1,23 @@
+table {
+    color: rgb(18, 38, 74);
+    text-align: center;
+    width: 90%;
+    margin-left: 70px;
+    margin-top: 50px;
+}
+
+.left-side {
+    color: rgb(18, 38, 74);
+}
+
+.right-side {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.fa {
+    font-size: 25px;
+    cursor: pointer;
+    color: rgb(236, 49, 74);
+}

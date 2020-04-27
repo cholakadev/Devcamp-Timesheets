@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/timesheets"><img src="./assets/Logo.png" class="logo-img" alt="DevCamp Timesheets Logo" /></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav mr-auto ml-5">
+
+      <a class="nav-item nav-link" routerLink="/timesheets">All Timesheets <i class="fa fa-list-alt"></i></a>
+
+      <a class="nav-item nav-link ml-3" routerLink="/timesheets/create">Create Timesheet <i class="fa fa-plus-square"></i></a>
+
+    </div>
+
+    <ul class="navbar-nav mr-1 mt-3">
+      <li class="nav-item">
+        <button type="button" class="btn btn-outline-dark">LOG OUT</button>
+        <p class="mt-2"><b>User:</b> Name </p>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

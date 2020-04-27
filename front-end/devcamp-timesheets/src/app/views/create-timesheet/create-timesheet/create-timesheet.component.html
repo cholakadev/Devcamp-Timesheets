@@ -1,0 +1,22 @@
+<h1>Create new Timesheet</h1>
+
+<div class="container">
+  <div class="form-group col-4">
+    <form
+      [formGroup]="createTimesheetFormGroup"
+    >
+      <label>Select Week:</label>
+      <select class="custom-select"
+              formControlName="weeks"
+      >
+<!--        <option [selected]>{{selectedCurrentWeek}}</option>-->
+        <option
+          *ngFor="let week of weekOptions"
+          [ngValue]="week"
+        >{{week.week_start}} {{week.current_week}}</option>
+      </select>
+      <button type="button" class="btn btn-outline-dark mt-5" (click)="createTimesheet()">NEXT</button>
+    </form>
+  </div>
+  <!--  (click)="redirect()"-->
+</div>

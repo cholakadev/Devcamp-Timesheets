@@ -1,0 +1,8 @@
+/env
+.idea
+devcamp/devcamp/__pycache__
+devcamp/timesheets/__pycache__/
+devcamp/timesheets/migrations/__pycache__/
+devcamp/timesheets/__pycache__/
+devcamp/__pycache__/
+

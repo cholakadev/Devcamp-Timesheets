@@ -1,0 +1,126 @@
+<div *ngIf="timesheet">
+  <div class="left-side ml-5 mt-3">
+  </div>
+  <div class="right-side mr-5" *ngIf="timesheet?.is_submitted;else buttons">
+    timesheet for {{timesheet.start_date}} has been submitted
+  </div>
+  <ng-template #buttons>
+    <div class="right-side mr-5">
+      <div class="ml-2">
+        <button type="button" class="btn btn-outline-danger btn-lg" (click)="openModal(template, timesheet.id)">Delete
+        </button>
+      </div>
+      <div class="ml-2">
+        <button type="button" class="btn btn-outline-info btn-lg">Save</button>
+      </div>
+      <div class="ml-2">
+        <button type="button" class="btn btn-outline-dark btn-lg" (click)="submitTimesheet()">Submit
+        </button>
+      </div>
+    </div>
+  </ng-template>
+
+  <table class="table">
+    <thead class="thead">
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">
+          <p>Project</p>
+        </th>
+        <th scope="col">
+          <p>Task</p>
+        </th>
+        <th scope="col">Mon<p>{{daysArr[0] |  date:'dd-MM-yyyy'}}</p>
+        </th>
+        <th scope="col">Tue<p>{{daysArr[1] |  date:'dd-MM-yyyy'}}</p>
+        </th>
+        <th scope="col">Wed<p>{{daysArr[2] |  date:'dd-MM-yyyy'}}</p>
+        </th>
+        <th scope="col">Thu<p>{{daysArr[3] |  date:'dd-MM-yyyy'}}</p>
+        </th>
+        <th scope="col">Fri<p>{{daysArr[4] |  date:'dd-MM-yyyy'}}</p>
+        </th>
+        <th scope="col">Sat<p>{{daysArr[5] |  date:'dd-MM-yyyy'}}</p>
+        </th>
+        <th scope="col">Sun<p>{{daysArr[6] |  date:'dd-MM-yyyy'}}</p>
+        </th>
+        <th>
+          <p>Total</p>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row">
+          <button class="btn"><i class="fa fa-minus-square"></i></button>
+        </td>
+        <td>
+          <form [formGroup]="projectsFormGroup">
+            <select class="custom-select" formControlName="project">
+              <!-- <option *ngIf="selectedProject; else elseBlock4" [selected]="true" [value]="selectedProject.id">{{selectedProject.name}}</option>
+            <ng-template #elseBlock4> -->
+              <option [selected]="true">select project...</option>
+              <option *ngFor="let p of projectOptions" [value]="p.id">{{p.name}}</option>
+              <!-- </ng-template> -->
+            </select>
+          </form>
+        </td>
+        <td>
+          <form [formGroup]="projectsFormGroup">
+            <select class="form-control" formControlName="task">
+              <option [selected]="true">select task...</option>
+              <option *ngFor="let t of tasksByProjectOptions" [value]="t.id">{{t.name}}</option>
+            </select>
+          </form>
+        </td>
+        <!-- <td *ngFor="let day of timesheet.days">
+        <input *ngIf="timesheet.is_submitted; else elseBlock" type="number" class="form-control" size="10"
+          value="{{day.worked_hours}}" disabled>
+        <ng-template #elseBlock>
+          <input type="text" class="form-control" size="10" value="{{day.worked_hours}}">
+        </ng-template>
+      </td> -->
+        <td *ngFor="let day of timesheet.days">
+          <input *ngIf="timesheet.is_submitted; else elseBlock" type="number" class="form-control" size="10"
+            value="{{day.worked_hours}}" [(ngModel)]="day.worked_hours" disabled>
+          <ng-template #elseBlock>
+            <input type="text" class="form-control" size="10" value="{{day.worked_hours}}"
+              [(ngModel)]="day.worked_hours">
+          </ng-template>
+        </td>
+        <td>
+          <input *ngIf="timesheet.is_submitted" type="number" class="form-control" size="10" value="" disabled>
+          <ng-template #elseBlock1>
+            <input type="text" class="form-control" size="10" value="">
+          </ng-template>
+        </td>
+        <td>
+          <input *ngIf="timesheet.is_submitted" type="number" class="form-control" size="10" value="" disabled>
+          <ng-template #elseBlock2>
+            <input type="text" class="form-control" size="10" value="">
+          </ng-template>
+        </td>
+        <td>{{totalHours}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<ng-template #template>
+  <div class=" modal-header">
+    <h4 class="modal-title pull-left">Confirmation</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to delete this timesheet?</p>
+    <div class="d-flex">
+      <button type="button" class="btn btn-outline-danger" style="margin-right: 10px;"
+        (click)="deleteTimesheet(modalRef.content); modalRef.hide()">Continue
+      </button>
+      <button type="button" class="btn btn-outline-dark" (click)="modalRef.hide()">Cancel</button>
+    </div>
+  </div>
+</ng-template>
